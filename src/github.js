@@ -15,16 +15,10 @@ async function authenticate () {
 }
 
 const profile = async (user) => {
-  let responce = retrieveProfle(user)
-  responce = responce.then(res =>{
-    return res
-  })
+  let responce = octokit.users.getByUsername({username:user})
+  responce = responce.then(res => res)
   return responce
 }
-
-const retrieveProfle = (user) =>{
-  return octokit.users.getByUsername({username:user})
-} 
 
 const repos = async (user, strict = false) => {
   if (!authenticated) authenticate()
