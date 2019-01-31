@@ -3,8 +3,10 @@
 const github = require('./github')
 
 const profile = async (username) => {
-  const info = await github.profile(username)
-  console.log(info)
+  github.profile(username).then(info=>{
+    console.log(info)
+  })
+  
 }
 
 const repositories = async (username) => {
